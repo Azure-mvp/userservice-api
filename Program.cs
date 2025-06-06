@@ -7,10 +7,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost5173",
-        builder =>
+    options.AddPolicy("AllowAllFrontends",
+        policy =>
         {
-            builder.WithOrigins("http://localhost:5173")
+            policy.WithOrigins("http://localhost:5173",
+                "https://witty-mushroom-0bf17e710.6.azurestaticapps.net"
+                )
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -28,7 +30,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.UseCors("AllowLocalhost5173");
+app.UseCors("AllowAllFrontends");
 
 app.UseAuthorization();
 
