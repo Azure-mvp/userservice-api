@@ -7,7 +7,7 @@ namespace UserService.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        [HttpPost("login")]
+        [HttpPost("login")] //Skapad med hjälp av ChatPGT.//
         public ActionResult<User> Login([FromBody] LoginRequest request)
         {
             if (request.Username == "test" && request.Password == "1234")
